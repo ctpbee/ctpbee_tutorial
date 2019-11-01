@@ -14,9 +14,9 @@ app = CtpBee("somewheve", __name__)
 
 - [策略模块](modules/strategy.md)
 
-- [风控模块]()
+- [操作模块](modules/action.md)
 
-- [操作模块]()
+- [风控模块](modules/risk.md)
 
 - [日志模块]()
 
