@@ -29,9 +29,51 @@ from ctpbee import Action
 ```
 这当然很简单， 不是吗 
 
-##### 使用
-在你
+##### 扩展
+如果你不需要添加任何自定义的功能，那么请直接看下面的API， 我现在来为你介绍如何扩展Action模块
 ```python
+from ctpbee import Action
 
+
+class ActionMe(Action):
+    def __init__(self, app):
+        super().__init__(app)
+        
+    # 尝试扩展一个操作 
+    def operation(self, *args, **kwargs):
+        pass
+    
 ```
+上述我们其实就扩展了一个操作，但是我们如何把他载入到系统中去以及如何调用相信你还是一头雾水。
+因为杆子是提前创建好的，所以我们需要在app创建的时候将其传入 
+```python
+from ctpbee import CtpBee
+app = CtpBee("demo", __name__, action_class=ActionMe)
+```
+通过上述代码我们就可以讲`ActionMe`载入到核心App中，那我们在策略中如何进行使用呢？ 
+```python
+from ctpbee import CtpbeeApi
+from ctpbee.constant import BarData, TickData
+class Demo(CtpbeeApi):
+
+    def on_bar(self, bar: BarData) -> None:
+        self.action.sell(bar.high_price, volume=1, origin=bar)
+
+    def on_tick(self, tick: TickData) -> None:
+        pass
+```
+
+诚如你所见，策略会有一个属性名字叫做action,通过它，你就可以访问到操作模块，等k线进来进行了 **平空一手** 的操作。
+同时你也可以通过`self.action.operation()`调用到你自己创建的函数 。通过这样的方式就可以实现 `一次编写->所有策略都可以进行调用`
+
+##### 基础API
+为了给你们提供一些好用的函数，ctpbee特意为你们写了一些API，他们分为两种，一种是底层API， 一种是上层API(应用API).
+###### 底层API
+诚如所见，底层API是负责更加底层的一点事情,比如说发单操作，下面我给出一个函数包含函数前面的列表以及如何使用的方法 
+
+- send_order   发单
+函数解释:
+    def send_order()
+
+
 
