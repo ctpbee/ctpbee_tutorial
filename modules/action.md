@@ -66,14 +66,152 @@ class Demo(CtpbeeApi):
 诚如你所见，策略会有一个属性名字叫做action,通过它，你就可以访问到操作模块，等k线进来进行了 **平空一手** 的操作。
 同时你也可以通过`self.action.operation()`调用到你自己创建的函数 。通过这样的方式就可以实现 `一次编写->所有策略都可以进行调用`
 
-##### 基础API
+#### API
 为了给你们提供一些好用的函数，ctpbee特意为你们写了一些API，他们分为两种，一种是底层API， 一种是上层API(应用API).
+
+
 ###### 底层API
+
 诚如所见，底层API是负责更加底层的一点事情,比如说发单操作，下面我给出一个函数包含函数前面的列表以及如何使用的方法 
 
 - send_order   发单
-函数解释:
-    def send_order()
+
+```python
+
+def send_order(self, order):
+    """
+    接受一个标准格式的发单请求， 返回报单本地id
+    """
+    pass
+
+```
 
 
+- cancel_order   撤单
 
+```python
+def cancel_order(self, cancel_req):
+    """
+    接受一个请求， 返回成功与否（1/0）
+    """
+    pass
+```
+
+###### 高层API
+
+- `buy`   **买多**
+
+```python
+from ctpbee.constant import *
+
+def buy(self, price: float, volume: float, origin,price_type: OrderType = OrderType.LIMIT,
+         stop: bool = False, lock: bool = False, **kwargs):
+    """
+    此函数主要实现买多的操作
+    * price: 发单价格
+    * volume: 发单手数
+    * origin: 源，传入k线数据或者tick数据或者其他数据, 此处传入他主要是为了获取交易所代码
+    * price_type: 价格类型，默认传入限价
+    * stop: 暂时无效，后面会维护
+    * lock: 暂时无效，后面会维护
+    * kwargs: 未启用
+    """
+```
+
+- `short` **卖空**cover
+
+```python
+from ctpbee.constant import *
+
+def short(self, price: float, volume: float, origin,price_type: OrderType = OrderType.LIMIT,
+         stop: bool = False, lock: bool = False, **kwargs):
+    """
+    此函数主要实现卖空的操作
+    * price: 发单价格
+    * volume: 发单手数
+    * origin: 源，传入k线数据或者tick数据或者其他数据, 此处传入他主要是为了获取交易所代码
+    * price_type: 价格类型，默认传入限价
+    * stop: 暂时无效，后面会维护
+    * lock: 暂时无效，后面会维护
+    * kwargs: 未启用
+    """
+```
+
+- `cover` **平多头仓位**
+
+```python
+from ctpbee.constant import *
+
+def cover(self, price: float, volume: float, origin,price_type: OrderType = OrderType.LIMIT,
+         stop: bool = False, lock: bool = False, **kwargs):
+    """
+    此函数主要实现平多头的操作
+    * price: 发单价格
+    * volume: 发单手数
+    * origin: 源，传入k线数据或者tick数据或者其他数据, 此处传入他主要是为了获取交易所代码
+    * price_type: 价格类型，默认传入限价
+    * stop: 暂时无效，后面会维护
+    * lock: 暂时无效，后面会维护
+    * kwargs: 未启用
+    因为个别交易所有平今和平昨的问题，ctpbee会自动区分交易所进行平仓 ，所以可能实现一个平仓请求会发送两次平仓操作，所以它返回的是一个列表
+    [local_order_id1, local_order_id2]
+
+    """
+```
+
+
+- `sell` **平空头仓位**
+
+```python
+from ctpbee.constant import *
+
+def sell(self, price: float, volume: float, origin,price_type: OrderType = OrderType.LIMIT,
+         stop: bool = False, lock: bool = False, **kwargs):
+    """
+    此函数主要实现平多头的操作
+    * price: 发单价格
+    * volume: 发单手数
+    * origin: 源，传入k线数据或者tick数据或者其他数据, 此处传入他主要是为了获取交易所代码
+    * price_type: 价格类型，默认传入限价
+    * stop: 暂时无效，后面会维护
+    * lock: 暂时无效，后面会维护
+    * kwargs: 未启用
+    因为个别交易所有平今和平昨的问题，ctpbee会自动区分交易所进行平仓 ，所以可能实现一个平仓请求会发送两次平仓操作，所以它返回的是一个列表
+    [local_order_id1, local_order_id2]
+
+    """
+```
+
+- `cancel`   **撤单**
+
+```python
+from ctpbee.constant import *
+from typing import Text
+def cancel(self, id: Text, origin: [BarData, TickData, TradeData, OrderData, PositionData] = None, **kwargs):
+    """
+    快捷撤单函数
+    id: 发单返回的单号
+    """
+
+```
+- `query_position` **发起一次持仓查询**
+
+```python
+def query_position(self):
+    """
+    向服务器发起一次持仓查询请求
+    """
+```
+
+- `query_account` **发起一次账户查询**
+
+```python
+def query_account(self):
+    """
+    向服务器发起一次账户查询请求
+    """
+```
+
+##### 还有一些话
+
+我们写了一些关于银行转账的API，但是苦于没有自己的账户可以进行实现， 这里就不过多加以阐述。后面如果完善了会补上完整的文档。
