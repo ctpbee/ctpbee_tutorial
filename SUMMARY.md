@@ -4,6 +4,7 @@
 
 - [Install](install.md)
 - [Module](module.md)
+    - [配置模块](modules/config.md)
     - [策略模块](modules/strategy.md)
     - [操作模块](modules/action.md)
 - [Demo](demo.md)
