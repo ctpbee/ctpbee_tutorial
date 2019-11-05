@@ -25,8 +25,8 @@ sudo locale-gen zh_CN.GB18030
 对于非ubuntu而言
 
 ```
-# vim /etc/locale.gen
-将下面一行添加到其中
+sudo vim /etc/locale.gen
+复制将下面一行添加到其中
 zh_CN.GB18030 GB18030 
 
 然后执行

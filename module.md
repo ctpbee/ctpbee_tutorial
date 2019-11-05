@@ -12,11 +12,13 @@ app = CtpBee("somewheve", __name__)
 
 我们在设计ctpbee的时候将每个账户都隔离开来，所以我们必须要为每个账户创建 一个`独一无二`的名字，那这就是 `somewheve`的由来， 而`__name__`则是导入模块的名称， 你无须知道他是什么意义， 但请确保 上述两个参数是必须传入的 ！那我们现在有了主要核心的app， 现在 就来让我们探索`ctpbee` 的模块， 下面所述的app皆指上述所创建的app实例。、
 
+- [配置模块](modules/config.md)
+
 - [策略模块](modules/strategy.md)
 
-- [风控模块]()
+- [操作模块](modules/action.md)
 
-- [操作模块]()
+- [风控模块](modules/risk.md)
 
 - [日志模块]()
 
