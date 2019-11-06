@@ -6,15 +6,47 @@
 ```python
 from ctpbee import CtpBee, CtpbeeApi
 from ctpbee.constant import *
+from ctpbee import Action
+from ctpbee import RiskLevel
+
+
+class ActionMe(Action):
+    def __init__(self, app):
+        # 请记住要对父类进行实例化
+        super().__init__(app)
+        # 通过add_risk_check接口添加风控
+        self.add_risk_check(self.sell)
+
+
+class RiskMe(RiskLevel):
+    def before_sell(self, *args, **kwargs):
+        """
+        对sell调用进行事前检查,
+        """
+        # 在此打印sell传入的参数
+        print(args)
+        return True, args, kwargs
+
+    def after_sell(self, result):
+        """
+        事后进行检查, 注意此函数只能被执行有限的时间
+        """
+        print(result)
+
+    def realtime_check(self):
+        """
+        请务必重写此函数
+        此函数一秒钟执行一次， 如果你需要执行多个周期的检查，可以自行添加变量
+        """
 
 
 class DoubleMA(CtpbeeApi):
-    
+
     def on_tick(self, tick: TickData) -> None:
         """
         tick行情触发的时候会调用此函数，你可以通过print来打印它查看详情
         """
-    
+
     def on_bar(self, bar: BarData) -> None:
         """
         当有bar线生成的时候会调用此函数， 你可以通过print来打印bar，但是你需要注意的是
@@ -23,8 +55,8 @@ class DoubleMA(CtpbeeApi):
             请自行编写
             def on_3_min_bar(self, bar):
                 pass
-            
-            然后在本函数中编写        
+
+            然后在本函数中编写
             if bar.interval == 3:
                 self.on_3_min_bar(self, bar)
         """
@@ -33,12 +65,27 @@ class DoubleMA(CtpbeeApi):
 
 def create_app():
     """
-    工厂函数 创建app变量并加载相关变量，最后返回    
+    工厂函数 创建app变量并加载相关变量，最后返回
     """
-    app = CtpBee("ctpbee", __name__) # 在此处我们创建我们的核心App。
-    double_ma = DoubleMA("double_ma") # 创建我们的策略实例
-    app.add_extension(double_ma) # 将我们的策略通过app的add_extension接口加入进系统
-    return app       
+    app = CtpBee("ctpbee", __name__, risk=RiskMe, action_class=ActionMe)  # 在此处我们创建我们的核心App。
+    info = {
+        "CONNECT_INFO": {
+            "userid": "089131",
+            "password": "350888",
+            "brokerid": "9999",
+            "md_address": "tcp://218.202.237.33:10112",
+            "td_address": "tcp://218.202.237.33:10102",
+            "product_info": "",
+            "appid": "simnow_client_test",
+            "auth_code": "0000000000000000"
+        },
+        "INTERFACE": "ctp",  # 接口声明
+        "TD_FUNC": True,  # 开启交易功能
+    }
+    app.config.from_mapping(info)
+    double_ma = DoubleMA("double_ma")  # 创建我们的策略实例
+    app.add_extension(double_ma)  # 将我们的策略通过app的add_extension接口加入进系统
+    return app
 
 
 if __name__ == "__main__":
@@ -47,7 +94,9 @@ if __name__ == "__main__":
     非交易时间段自动上下线
     """
     from ctpbee import hickey
+
     hickey.start_all(create_app)
+
    
 ```
 

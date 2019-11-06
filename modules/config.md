@@ -26,14 +26,14 @@ app.config.from_mapping(mapping_obj)
 - `pyfile support`
 
 ```python
-app.config.from_mapping(pyfile_path)
+app.config.from_pyfile(pyfile_path)
 ```
 
 - `obj support`
 
 ```python
 # 实例对象的支持
-app.config.from_obj(obj)
+app.config.from_object(obj)
 ```
 
 上述四个API应该能帮助你很灵活地传入你的配置。
