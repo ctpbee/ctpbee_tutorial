@@ -64,7 +64,7 @@ class DoubleMA(CtpbeeApi):
 
             然后在本函数中编写
             if bar.interval == 3:
-                self.on_3_min_bar(self, bar)
+                self.on_3_min_bar(bar)
         """
         pass
 
