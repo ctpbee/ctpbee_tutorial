@@ -55,5 +55,5 @@ app.config.from_object(obj)
 |REFRESH_INTERVAL| 1.5| float|定时刷新秒数， 需要在CtpBee实例化的时候将refresh设置为True才会生效|
 |INSTRUMENT_INDEPEND|False| True/False| 是否开启独立行情，策略对应相应的行情,注意你需要将合约的`local_symbol`加入到`instrument_set`|
 |CLOSE_PATTERN|"today"| today/yesterday| 面对支持平今的交易所，指定优先平今或者平昨 ---> today: 平今, yesterday: 平昨， 其他:触发异常|
-|TODAY_EXCHANGE|[Exchange.SHFE.value, Exchange.INE.value]| Exchange.key.value| 需要支持平今的交易所代码列表|
+|TODAY_EXCHANGE|["SHFE","INE"]| Exchange.key.value| 需要支持平今的交易所代码列表|
 |AFTER_TIMEOUT|3 |float| 设置执行风控after线程执行超时时间|
