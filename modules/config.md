@@ -39,3 +39,21 @@ app.config.from_object(obj)
 上述四个API应该能帮助你很灵活地传入你的配置。
 
 #### 配置项
+--- 
+
+| 配置项 | 默认值 | 可选值 | 解释 | 
+| :------| ------: | :------: | :------:|
+| TD_FUNC | False | True/False | 是否开启交易功能|
+| MD_FUNC | True | True/False | 是否开启行情功能|
+|INTERFACE|"ctp"| ctp/ctp_se  |载入接口名称，目前支持ctp生产以及ctp_se穿透式验证接口|
+|XMIN| [] | [int] | k线序列周期，支持一小时以内的k线任意生成,默认生成一分钟的k线|
+|SLIPPAGE_COVER|0| float | 平多头设置的滑点， 支持正负数|
+|SLIPPAGE_SELL | 0| float|  平空头滑点设置|
+|SLIPPAGE_SHORT|0 | float|  卖空滑点设置|
+|SLIPPAGE_BUY|0| float|买多滑点设置|
+|SHARED_FUNC| False| True/False|分时图数据--->等待删除
+|REFRESH_INTERVAL| 1.5| float|定时刷新秒数， 需要在CtpBee实例化的时候将refresh设置为True才会生效|
+|INSTRUMENT_INDEPEND|False| True/False| 是否开启独立行情，策略对应相应的行情,注意你需要将合约的`local_symbol`加入到`instrument_set`|
+|CLOSE_PATTERN|"today"| today/yesterday| 面对支持平今的交易所，指定优先平今或者平昨 ---> today: 平今, yesterday: 平昨， 其他:触发异常|
+|TODAY_EXCHANGE|[Exchange.SHFE.value, Exchange.INE.value]| Exchange.key.value| 需要支持平今的交易所代码列表|
+|AFTER_TIMEOUT|3 |float| 设置执行风控after线程执行超时时间|
