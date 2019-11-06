@@ -10,11 +10,11 @@
 ### 教程 
 - [ctpbee安装](install.md)
 
+- [快速入门](demo.md)
+
 - [模块化的构造方式](module.md)
 
-- [从头开始一个新的策略](demo.md)
-
-- [API](API.md)
+- [API介绍](API.md)
 
 - [基于插件式的构造](plugin.md)
 
