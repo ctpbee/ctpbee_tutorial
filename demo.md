@@ -10,6 +10,7 @@ from ctpbee import Action
 from ctpbee import RiskLevel
 from ctpbee import VLogger
 
+
 class Logger(VLogger):
     def handler_record(self, record: dict):
         """ 处理日志接口"""
@@ -50,7 +51,7 @@ class DoubleMA(CtpbeeApi):
     def __init__(self, name):
         super().__init__(name)
         self.instrument_set = ['rb2001.SHFE']
-    
+
     def on_contract(self, contract: ContractData):
         if contract.local_symbol in self.instrument_set:
             self.action.subscribe(contract.local_symbol)
@@ -59,6 +60,8 @@ class DoubleMA(CtpbeeApi):
         """
         tick行情触发的时候会调用此函数，你可以通过print来打印它查看详情
         """
+        # 打印 tick 信息
+        print(tick)
 
     def on_bar(self, bar: BarData) -> None:
         """
@@ -80,7 +83,7 @@ def create_app():
     """
     工厂函数 创建app变量并加载相关变量，最后返回
     """
-    app = CtpBee("ctpbee", __name__, risk=RiskMe, action_class=ActionMe,logger_class=Logger)  # 在此处我们创建我们的核心App。
+    app = CtpBee("ctpbee", __name__, risk=RiskMe, action_class=ActionMe, logger_class=Logger)  # 在此处我们创建我们的核心App。
     info = {
         "CONNECT_INFO": {
             "userid": "089131",
@@ -107,7 +110,8 @@ if __name__ == "__main__":
     非交易时间段自动上下线
     """
     from ctpbee import hickey
-    # 注意你在此处传入的是创建App的函数 
+
+    # 注意你在此处传入的是创建App的函数
     hickey.start_all(create_app)
 ```
 
