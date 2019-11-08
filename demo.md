@@ -60,7 +60,6 @@ class DoubleMA(CtpbeeApi):
         """
         tick行情触发的时候会调用此函数，你可以通过print来打印它查看详情
         """
-        # 打印 tick 信息
         print(tick)
 
     def on_bar(self, bar: BarData) -> None:
