@@ -3,7 +3,7 @@
 * [Introduction](README.md)
 
 - [Install](install.md)
-- [Demo](demo.md)
+- [Quick Start](demo.md)
 - [Module](module.md)
     - [配置模块](modules/config.md)
     - [策略模块](modules/strategy.md)
