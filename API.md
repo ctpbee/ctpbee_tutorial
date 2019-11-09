@@ -36,7 +36,6 @@ assert app1 == app2
 - `switch_app()` ---> params: app_name
 
 解释: 将指定账户切换到栈顶，使得可以通过current_app可以进行访问
-添加了缩进选项，以dump()使其产生多行缩进输出。（由Serhiy Storchaka在bpo-37995中贡献。）
 
 示例:
 ```python
