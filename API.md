@@ -27,12 +27,12 @@ app2 = get_app("somewheve")
 assert app1 == app2
 ```
 
----
+
 - `del_app()` ---> params: app_name
 
 解释：顾名思义，删除账号,需要传入账户名 ，注意这是一个**危险操作**，谨慎使用。
 
----
+
 - `switch_app()` ---> params: app_name
 
 解释: 将指定账户切换到栈顶，使得可以通过current_app可以进行访问
@@ -56,7 +56,17 @@ print(current_app.name)
 --- 
 
 - `send_order()` ---> params: order_req, app_name
-> 传入发单请求和账户名字，使得账户能够发单，当app_name不传入的时候默认使用current_app
+
+解释: 传入发单请求和账户名字，使得账户能够发单，当app_name不传入的时候默认使用current_app, 使用此API需要你熟练掌握`ctpbee`的机制。
+知道如何生成一个发单请求
+
+示例:
+```python
+from ctpbee import send_order 
+from ctpbee import helper
+
+
+```
 
 - `cancel_order()` ---> params: cancel_req, app_name
 > 和send_order类似，不过是传入撤单请求，撤单 

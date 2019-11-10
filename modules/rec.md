@@ -71,7 +71,7 @@
 等后续内部测试ok了我会将其放出来，如果有兴趣的可以自行阅读代码！
 
 #### 3.数据结构
-关于`ctpbee`的数据构成，请参见 [ctpbee常量](https://github.com/ctpbee/ctpbee/blob/master/ctpbee/constant.py)
+关于`ctpbee`的数据构成，请参见 [ctpbee常量](config.md)
 
 值得注意的是你需要将明白Data类型的数据都有以下的API
 - `_to_df()`
