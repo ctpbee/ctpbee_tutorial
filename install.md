@@ -40,3 +40,8 @@ sudo locale-gen
 ```
 pip3 install ctpbee
 ```
+
+
+## for Mac
+
+不好意思我已经尝试过用ios的接口编译ctp接口，但是仍然无法正常进行工作。所以暂时不要使用！
