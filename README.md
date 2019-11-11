@@ -26,6 +26,8 @@ Difference:
 
 - [API介绍](API.md)
 
+- [数据结构](constant.md)
+
 - [基于插件式的构造](plugin.md)
 
 ---
