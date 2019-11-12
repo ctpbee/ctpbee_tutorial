@@ -58,16 +58,16 @@
 | 字段名称 | 解释说明 | 字段名称 | 解释说明|
 | :-----  | :----:  | :----  | :----: |
 |    balance    |     余额  |     frozen    |     冻结   |
-|local_account_id|     本地账户id    |           |          |
+|local_account_id|     本地账户id    |   available    |   可用资金  |
 
 ## ContractData
 
 | 字段名称 | 解释说明 | 字段名称 | 解释说明|
 | :-----  | :----:  | :----  | :----: |
-|   min_volume  |          |  net_position |          |
-| option_expiry |          | option_strike |          |
-|  option_type  |          |option_underlying|          |
-| stop_supported|          |               |          |
-
-
+|   min_volume  |              |  net_position |          |
+| option_expiry |    到期日     | option_strike |    执行价  |
+|  option_type  |    期权类型   |option_underlying|   基础商品代码     |
+| stop_supported|              |      pricetick    |   最小变动价位       |
+| product | 产品类型 |   size   |  合约数量乘数     |
+| name |   合约名称 |  exchange |  交易所 |  
 ---
