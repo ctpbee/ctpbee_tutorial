@@ -1,10 +1,10 @@
 # Summary
 
-* [Introduction](README.md)
+* [起源](README.md)
 
-- [Install](install.md)
-- [Quick Start](demo.md)
-- [Module](module.md)
+- [安装](install.md)
+- [快速开始](demo.md)
+- [模块化工作](module.md)
     - [配置模块](modules/config.md)
     - [策略模块](modules/strategy.md)
     - [数据模块](modules/rec.md)
@@ -12,8 +12,8 @@
     - [风控模块](modules/risk.md)
     - [日志模块](modules/log.md)
 
-- [API](API.md)
-- [Plugin](plugin.md)
-- [DataStructure](constant.md)
-- [QA](error.md)
+- [API介绍](API.md)
+- [插件](plugin.md)
+- [数据结构](constant.md)
+- [常见问题](error.md)
 
