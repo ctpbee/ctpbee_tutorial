@@ -178,10 +178,11 @@ if __name__ == '__main__':
  我来解释下, 策略肯定要能够拥有`app`这个属性，所以我们肯定需要将`app`传入进去 ，他们应该是互相拥有的方式.
  但是如何让他们互相拥有这个的实现方式大有文章，
  **有四种可能**：
- 1. app创建的时候传入 //  app作为核心，创建的时候传入明显不合适 
- 2. app创建后传入        可以，通过`add_extension` 传入策略
- 3. 策略创建的时候传入    可以，策略角色属于运行方。`data_recorder = DataRecorder("data_recorder", app)`，但是这不一定是必要的，作为可选方案
- 4. 策略创建后传入       `data_recorder.init_app(app=app)`
+ 
+ -  app创建的时候传入 //  app作为核心，创建的时候传入明显不合适 
+ -  app创建后传入        可以，通过`add_extension` 传入策略
+ -  策略创建的时候传入    可以，策略角色属于运行方。`data_recorder = DataRecorder("data_recorder", app)`，但是这不一定是必要的，作为可选方案
+ -  策略创建后传入       `data_recorder.init_app(app=app)`
 
 所以基于这四种方式，你可以很灵活的进行工程化~~ 
 

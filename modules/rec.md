@@ -6,6 +6,14 @@
 #### 1.数据记录器
 
 ** 记住所有方法都是在`self.app.recorder`， 后面标注的`params`是需要传入的参数名字 **
+###### 调用示例
+```python
+
+def on_bar(self, bar):
+    active_orders = self.app.recorder.get_all_active_orders()
+    print(active_orders)
+```
+
 - `get_all_orders()`
 > 返回所有的报单
 

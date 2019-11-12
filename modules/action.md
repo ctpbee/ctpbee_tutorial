@@ -199,7 +199,9 @@ def cancel(self, id: Text, origin: [BarData, TickData, TradeData, OrderData, Pos
 ```python
 def query_position(self):
     """
-    向服务器发起一次持仓查询请求
+    向服务器发起一次持仓查询请求, 注意这是向服务器发起查询请求，而不是直接拿到数据，
+    因为ctp的机制问题我们需要发起请求，然后接受他们的数据，数据的访问参见数据模块，
+    下面的查询账户也是一样的道理
     """
 ```
 
