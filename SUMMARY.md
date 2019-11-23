@@ -18,3 +18,11 @@
 - [常见问题](error.md)
 - [版本记录](version.md)
 
+--- 
+- [回测](looper.md)
+    - [载入数据](loopers/data.md)
+    - [配置配置](loopers/config.md)
+    - [开始一个简单的回测](loopers/looper_demo.md)
+    - [回测指标解释](loopers/result.md)
+
+
