@@ -12,6 +12,7 @@ class Logger(VLogger):
 ```
 
 #### 如何载入
+
 ```python
 from ctpbee import CtpBee
 # 通过logger_class将类传进去
