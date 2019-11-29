@@ -21,7 +21,7 @@
 |   low_price   |  最低价   |      name     |   中文名  |
 | open_interest |  持仓量   |   open_price  |   开盘价  |
 |   pre_close   |昨日收盘价|pre_settlement_price| 昨日结算价 |
-|     volume    |  成交量  |               |          |
+|     volume    |  成交量  |      pre_open_interest   |    昨日持仓量       |
 ## BarData
 
 | 字段名称 | 解释说明 | 字段名称 | 解释说明|
