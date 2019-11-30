@@ -70,4 +70,5 @@
 | stop_supported|              |      pricetick    |   最小变动价位       |
 | product | 产品类型 |   size   |  合约数量乘数     |
 | name |   合约名称 |  exchange |  交易所 |  
+
 ---
