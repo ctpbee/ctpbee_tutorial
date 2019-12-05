@@ -30,7 +30,8 @@ sudo ctpbee -auto generate
 
 > 如果你的版本号小于0.45，那么请升级到>=0.45， ctpbee代码会保持向前兼容
 >
-> 如果你是使用虚拟环境请使用 sudo /path/to/virtual_path_interpreter -auto generate
+> 如果你是使用虚拟环境请使用 sudo /path/to/python/bin/ctpbee -auto generate
+> 注意此处说的是虚拟环境目录下面的bin目录下的ctpbee
 
 ## for Mac
 
