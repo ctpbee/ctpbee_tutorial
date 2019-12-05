@@ -4,6 +4,8 @@
 
 - [安装](install.md)
 - [快速开始](demo.md)
+- [教程](tutorial.md)
+    
 - [模块化工作](module.md)
     - [配置模块](modules/config.md)
     - [策略模块](modules/strategy.md)
