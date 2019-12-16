@@ -26,7 +26,7 @@ app1 =  CtpBee("somewheve", __name__)
 app2 = get_app("somewheve")
 assert app1 == app2
 ```
-
+可以看到他们是同一个对象。
 
 - `del_app()` ---> params: app_name
 
@@ -62,7 +62,6 @@ yutiansut1
 ```
 
 在上述的输出中，我们三次都打印了current_app的name属性， 可以看出前两次输出的都是最新创建的，但是当调用了switch_app之后，成功输出了`yutiansut1`的值
-
 
 --- 
 
