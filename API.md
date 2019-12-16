@@ -39,6 +39,7 @@ assert app1 == app2
 
 示例:
 ```python
+# 我们在此处创建了第一个账户App
 from ctpbee import current_app, switch_app, CtpBee
 app = CtpBee("yutiansut1", __name__)
 print(current_app.name)
@@ -52,6 +53,16 @@ print(current_app.name)
 switch_app("yutiansut1")
 print(current_app.name)
 ```
+> 输出
+
+```textmate
+yutainsut1
+yutiansut2
+yutiansut1
+```
+
+在上述的输出中，我们三次都打印了current_app的name属性， 可以看出前两次输出的都是最新创建的，但是当调用了switch_app之后，成功输出了`yutiansut1`的值
+
 
 --- 
 
@@ -64,7 +75,7 @@ print(current_app.name)
 ```python
 from ctpbee import send_order 
 from ctpbee import helper
-
+# 通过helper提供的方法来快速生成报单请求
 
 ```
 
@@ -72,10 +83,26 @@ from ctpbee import helper
 > 和send_order类似，不过是传入撤单请求，撤单 
 
 - `subscribe()` ---> params: local_symbol
-> 订阅行情.
+> 订阅行情. 传入订阅的代码即可，可以调用for循环来订阅多个行情
 
 - `auth_time()` ---> params: data_time
 > 传入数据的datetime.time()格式的时间，校验时间合不合法。返回True/False
 
 - `get_ctpbee_path()`
-> 返回ctpbee系统的默认路径
+> 返回ctpbee系统的默认路径 
+
+示例:
+```python
+
+from ctpbee import get_ctpbee_path
+
+path = get_ctpbee_path()
+print("ctpbee path: ", path)
+```
+
+输出:
+
+```textmate
+ctpbee path:  /home/somewheve/.ctpbee
+```
+注意此输出视个人电脑而定
