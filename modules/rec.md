@@ -5,61 +5,21 @@
 
 #### 1.数据记录器
 
-** 记住所有方法都是在`self.app.recorder`， 后面标注的`params`是需要传入的参数名字 **
-###### 调用示例
-```python
+** 记住所有方法都是在`self.app.center` 后面标注的`params`是需要传入的参数名字 **
 
-def on_bar(self, bar):
-    active_orders = self.app.recorder.get_all_active_orders()
-    print(active_orders)
+> 原本的recorder数据访问同样支持,文档中不再阐述此API， 但是你可以通过阅读取源代码
+
+#### API
+属性  active_orders  --->  还未成交的报单
+注意他返回的是一个列表 [orderdata1, orderdata2, orderdata3]
+```python
+from ctpbee import CtpbeeApi
+class Example(CtpbeeApi):
+    def on_bar(self, bar):
+        active_orders = self.app.center.active_orders
+        print(active_orders)
 ```
 
-- `get_all_orders()`
-> 返回所有的报单
-
-- `get_all_active_orders()`
-> 返回所有未成交的单子
-
-- `get_all_trades()`
-> 返回所有成交单
-
-- `get_all_contracts()`
-> 返回所有的合约
-
-- `get_all_tick()`
-> 返回当日的你订阅合约的所有tick
-
-- `get_errors()`
-> 返回所有的报错信息
-
-- `get_new_error()`
-> 获取最新的一条错误
-
-- `get_tick()` --> params: `local_symbol`
-> 返回当日登录之后指定合约的tick
-
-- `get_trade()` --> params: `local_trade_id`
-> 根据成交编号返回详细的成交单信息
-
-- `get_contract_last_price()` --> params: `local_symbol`
-> 根据local_symbol拿到合约的最新价格
-
-- `get_main_contract_by_code()`  --> params: `code`
-> 根据code拿到该code的主力合约，例如传入rb返回rb的主力合约,注意区分大小写
-- `get_bar()` -->
-
-
-- `get_contract()` ---> params: `local_symbol`
-> 用途: 根据local_symbol返回合约的具体信息， 注意返回对象是一个ContractData实例
-
-- `get_account()` --->
-> 用途: 返回当前账户信息
-
-- `.main_contract_list` 
-> 属性，返回主力合约列表 --> 注意工作可能不会很完善 
-
-- `clear_all()`
-> 清除掉所有的数据信息 
 
 #### 2.持仓管理
 > 这一部分的还不够完善， 需要你的意见
