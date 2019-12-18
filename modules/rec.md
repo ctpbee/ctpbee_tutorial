@@ -33,6 +33,7 @@ class Example(CtpbeeApi):
 ```
 
 - 属性 `trades` ---> 返回当日所有成交单
+
 ```python
 from ctpbee import CtpbeeApi
 class Example(CtpbeeApi):
@@ -55,6 +56,7 @@ class Example(CtpbeeApi):
 
 - 函数 `get_tick` ---> 返回最近一条tick信息
 注意： 它返回的是一个TickData, 需要传入 `local_symbol`
+
 ```python
 from ctpbee import CtpbeeApi
 class Example(CtpbeeApi):
@@ -67,6 +69,7 @@ class Example(CtpbeeApi):
 
 - 函数 `get_active_order` ---> 返回某个合约的未成交单 
 注意：他返回的是一个列表， 需要传入 `local_symbol`
+
 ```python
 from ctpbee import CtpbeeApi
 class Example(CtpbeeApi):
