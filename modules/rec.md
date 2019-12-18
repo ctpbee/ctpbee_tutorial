@@ -91,6 +91,7 @@ class Example(CtpbeeApi):
     + `long_pnl` 长头持仓盈利
     + `short_pos` 空头持仓
     + `short_pnl` 空投持仓盈利
+  
 调用示例
 
 ```python
