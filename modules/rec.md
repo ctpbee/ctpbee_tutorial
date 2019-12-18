@@ -44,7 +44,6 @@ class Example(CtpbeeApi):
 ```
 
 - 属性 `account` ---> 返回账户信息
-
 ```python
 from ctpbee import CtpbeeApi
 class Example(CtpbeeApi):
