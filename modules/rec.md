@@ -44,6 +44,7 @@ class Example(CtpbeeApi):
 ```
 
 - 属性 `account` ---> 返回账户信息
+
 ```python
 from ctpbee import CtpbeeApi
 class Example(CtpbeeApi):
@@ -87,13 +88,27 @@ class Example(CtpbeeApi):
 - `get_position(local_symbol) -> PositionModel`  获取某个合约的持仓信息
 
     + `long_pos` 长头持仓
-    
+    + `long_pnl` 长头持仓盈利
     + `short_pos` 空头持仓
-    
+    + `short_pnl` 空投持仓盈利
+调用示例
+
+```python
+from ctpbee import CtpbeeApi
+class Example(CtpbeeApi):
+    def on_bar(self, bar):
+        # 此处我们拿到ag1912的最新一条tick
+        pos = self.app.center.get_position("ag1912.SHFE")
+        print(pos)
+        print(type(pos))
+        if not pos:
+            print("没持仓不好意思")
+        else:
+            print("long: ", pos.long_pos)
+            print("short: ", pos.short_pos)
+```
 
 
-> 用途: 获取账户所有的持仓 
-> 调用方式: self.app.recorder.get_all_positions()
 
 
 ###### 策略持仓管理
