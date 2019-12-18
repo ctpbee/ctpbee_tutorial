@@ -5,12 +5,13 @@
 
 #### 1.数据记录器
 
-** 记住所有方法都是在`self.app.center` 后面标注的`params`是需要传入的参数名字 **
+** 记住所有方法都是在`self.app.center`
 
 > 原本的recorder数据访问同样支持,文档中不再阐述此API， 但是你可以通过阅读取源代码
 
 #### API
-属性  active_orders  --->  还未成交的报单
+- 属性  `active_orders`  --->  还未成交的报单
+
 注意他返回的是一个列表 [orderdata1, orderdata2, orderdata3]
 ```python
 from ctpbee import CtpbeeApi
@@ -20,19 +21,77 @@ class Example(CtpbeeApi):
         print(active_orders)
 ```
 
+- 属性 `orders` ---> 返回所有报单信息 
+
+```python
+from ctpbee import CtpbeeApi
+class Example(CtpbeeApi):
+    def on_bar(self, bar):
+        # 拿到所有报单
+        orders = self.app.center.orders
+        print(orders)
+```
+
+- 属性 `trades` ---> 返回当日所有成交单
+```python
+from ctpbee import CtpbeeApi
+class Example(CtpbeeApi):
+    def on_bar(self, bar):
+        # 拿到所有报单
+        trades = self.app.center.trades
+        print(trades)
+```
+
+- 属性 `account` ---> 返回账户信息
+
+```python
+from ctpbee import CtpbeeApi
+class Example(CtpbeeApi):
+    def on_bar(self, bar):
+        # 拿到所有报单
+        account = self.app.center.account
+        print(account)
+```
+
+- 函数 `get_tick` ---> 返回最近一条tick信息
+注意： 它返回的是一个TickData, 需要传入 `local_symbol`
+```python
+from ctpbee import CtpbeeApi
+class Example(CtpbeeApi):
+    def on_bar(self, bar):
+        # 此处我们拿到ag1912的最新一条tick
+        tick = self.app.center.get_tick("ag1912.SHFE")
+        print(tick)
+        print(type(tick))
+```
+
+- 函数 `get_active_order` ---> 返回某个合约的未成交单 
+注意：他返回的是一个列表， 需要传入 `local_symbol`
+```python
+from ctpbee import CtpbeeApi
+class Example(CtpbeeApi):
+    def on_bar(self, bar):
+        # 此处我们拿到ag1912的最新一条tick
+        active_orders = self.app.center.get_active_order("ag1912.SHFE")
+        print(active_orders)
+        print(type(active_orders))
+```
 
 #### 2.持仓管理
-> 这一部分的还不够完善， 需要你的意见
 
 ###### 账户持仓管理
+注意： `get_position`函数，需要传入一个`local_symbol`，返回一个None(如果没有持仓的话)或者`PositionModel`
+, 下面的二级列表中列举了属性名称以及含义
+- `get_position(local_symbol) -> PositionModel`  获取某个合约的持仓信息
 
-- `get_all_positions()`
+    + `long_pos` 长头持仓
+    
+    + `short_pos` 空头持仓
+    
+
+
 > 用途: 获取账户所有的持仓 
 > 调用方式: self.app.recorder.get_all_positions()
-
-- `get_position_by_ld()` --> params: local_symbol, direction
-> 根据local_symbol和direction拿到持仓信心, 返回一个PositionData
-> 调用方式: self.app.recorder.position_manager.get_position_by_ld
 
 
 ###### 策略持仓管理
