@@ -87,10 +87,18 @@ class Example(CtpbeeApi):
 , 下面的二级列表中列举了属性名称以及含义
 - `get_position(local_symbol) -> PositionModel`  获取某个合约的持仓信息
 
-    + `long_pos` 长头持仓
+    + `long_volume` 长头总持仓
+    + `long_yd_volume` 长头历史持仓
+    + `long_price` 长头持仓均价
     + `long_pnl` 长头持仓盈利
-    + `short_pos` 空头持仓
+    + `long_frozen` 长头冻结
+    + `short_volume` 空头总持仓
+    + `short_yd_volume` 空头历史持仓
+    + `short_price` 空头持仓均价
     + `short_pnl` 空投持仓盈利
+    + `short_frozen` 空头冻结
+    + `exchange` 交易所代码
+    + `local_symbol` 本地合约代码
   
 调用示例
 
@@ -114,8 +122,12 @@ class Example(CtpbeeApi):
 
 ###### 策略持仓管理
 
-为了`ctpbee`能够更好的适应环境，我们开发了策略持仓管理， 但是当下它的表现不够稳定， 所以这一部分的文档我暂时不开发，
-等后续内部测试ok了我会将其放出来，如果有兴趣的可以自行阅读代码！
+为了`ctpbee`能够更好的适应环境，我们开发了策略持仓管理
+基于场景，策略访问自己的持仓和策略访问其他策略的持仓
+
+- 策略访问自己的持仓信息 
+
+
 
 #### 3.数据结构
 
