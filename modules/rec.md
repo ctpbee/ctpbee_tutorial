@@ -125,6 +125,7 @@ class Example(CtpbeeApi):
 为了`ctpbee`能够更好的适应环境，我们开发了策略持仓管理
 基于场景，策略访问自己的持仓和策略访问其他策略的持仓
 > 注意: 上面是使用center,而此处需要使用策略自带的level_position_manager
+
 - 策略访问自己的持仓信息  `get_position(local_symbol) -> PositionModel`
 
 代码示例
