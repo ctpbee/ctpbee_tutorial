@@ -113,8 +113,8 @@ class Example(CtpbeeApi):
         if not pos:
             print("没持仓不好意思")
         else:
-            print("long: ", pos.long_pos)
-            print("short: ", pos.short_pos)
+            print("long: ", pos.long_volume)
+            print("short: ", pos.short_volume)
 ```
 
 
