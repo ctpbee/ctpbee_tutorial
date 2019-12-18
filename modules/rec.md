@@ -124,16 +124,62 @@ class Example(CtpbeeApi):
 
 为了`ctpbee`能够更好的适应环境，我们开发了策略持仓管理
 基于场景，策略访问自己的持仓和策略访问其他策略的持仓
+> 注意: 上面是使用center,而此处需要使用策略自带的level_position_manager
+- 策略访问自己的持仓信息  `get_position(local_symbol) -> PositionModel`
 
-- 策略访问自己的持仓信息 
+代码示例
 
+```python
+from ctpbee import CtpbeeApi
+class Example(CtpbeeApi):
+    def on_bar(self, bar):
+        # 此处我们拿到ag1912的持仓信息
+        pos = self.level_position_manager.get_position("ag1912.SHFE")
+        print(pos)
+        print(type(pos))
+        if not pos:
+            print("没持仓不好意思")
+        else:
+            print("long: ", pos.long_volume)
+            print("short: ", pos.short_volume)
+``` 
 
+- 其他地方访问策略的持仓
+> 注意：此处需要用到我们的center
 
-#### 3.数据结构
+代码示例
+
+```python
+from ctpbee import CtpbeeApi
+class Example(CtpbeeApi):
+    def on_bar(self, bar):
+        # 假定另外一个策略的名字叫somewheve
+        pos = self.center['somewheve'].level_position_manager.get_position("ag1912.SHFE")
+        print(pos)
+        print(type(pos))
+        if not pos:
+            print("没持仓不好意思")
+        else:
+            print("long: ", pos.long_volume)
+            print("short: ", pos.short_volume)
+```
+
+注意:不同于账户持仓，策略持仓对某些字段做了删减，你只能访问一些持仓的信息。
++ `long_volume` 长头总持仓
++ `long_yd_volume` 长头历史持仓
++ `long_price` 长头持仓均价
++ `short_volume` 空头总持仓
++ `short_yd_volume` 空头历史持仓
++ `short_price` 空头持仓均价
++ `exchange` 交易所代码
++ `local_symbol` 本地合约代码
+
+#### 3.数据API
 
 关于`ctpbee`的数据构成，请参见 [数据结构](constant.md)
 
-值得注意的是你需要将明白Data类型的数据都有以下的API
+值得注意的是你需要将明白Data类型的数据都有以下的API，比如`on_tick`里面的`TickData`
+
 - `_to_df()`
 > 转换为DataFrame
 
