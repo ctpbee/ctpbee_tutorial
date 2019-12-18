@@ -38,7 +38,7 @@ class Example(CtpbeeApi):
 from ctpbee import CtpbeeApi
 class Example(CtpbeeApi):
     def on_bar(self, bar):
-        # 拿到所有报单
+        # 拿到所有成交单
         trades = self.app.center.trades
         print(trades)
 ```
@@ -49,7 +49,7 @@ class Example(CtpbeeApi):
 from ctpbee import CtpbeeApi
 class Example(CtpbeeApi):
     def on_bar(self, bar):
-        # 拿到所有报单
+        # 拿到账户信息
         account = self.app.center.account
         print(account)
 ```
@@ -74,7 +74,7 @@ class Example(CtpbeeApi):
 from ctpbee import CtpbeeApi
 class Example(CtpbeeApi):
     def on_bar(self, bar):
-        # 此处我们拿到ag1912的最新一条tick
+        # 此处我们拿到ag1912的所有未成交单
         active_orders = self.app.center.get_active_order("ag1912.SHFE")
         print(active_orders)
         print(type(active_orders))
@@ -106,7 +106,7 @@ class Example(CtpbeeApi):
 from ctpbee import CtpbeeApi
 class Example(CtpbeeApi):
     def on_bar(self, bar):
-        # 此处我们拿到ag1912的最新一条tick
+        # 此处我们拿到ag1912的持仓信息
         pos = self.app.center.get_position("ag1912.SHFE")
         print(pos)
         print(type(pos))
