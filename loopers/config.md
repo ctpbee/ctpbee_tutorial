@@ -35,4 +35,4 @@
 - slippage_cover   ***平多头滑点***
 - slippage_buy   ***买多滑点***
 - slippage_short ***卖空滑点***
-- close_pattern ***优先平仓模式***
+- close_pattern ***优先平仓模式* **

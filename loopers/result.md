@@ -1,4 +1,4 @@
-#### 回测结果解释
+### 回测结果解释
 
 - initial_capital 初始资金
 - start_date 开始日期
@@ -19,3 +19,7 @@
 - annual_return	20937.480463026062
 - daily_return	22.32490989370822
 - return_std
+
+### 回测评分
+
+此项功能仍然在开发计划当中
