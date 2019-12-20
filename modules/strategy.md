@@ -184,7 +184,7 @@ if __name__ == '__main__':
  -  策略创建的时候传入    可以，策略角色属于运行方。`data_recorder = DataRecorder("data_recorder", app)`，但是这不一定是必要的，作为可选方案
  -  策略创建后传入       `data_recorder.init_app(app=app)`
 
-所以基于这四种方式，你可以很灵活的进行工程化~~ 
+所以基于这三种方式，你可以很灵活的进行工程化~~ 
 
 
 ### 需要注意的点
