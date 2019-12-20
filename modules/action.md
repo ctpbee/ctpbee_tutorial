@@ -118,7 +118,7 @@ def buy(self, price: float, volume: float, origin,price_type: OrderType = OrderT
     """
 ```
 
-- `short` **卖空**cover
+- `short` **卖空**
 
 ```python
 from ctpbee.constant import *

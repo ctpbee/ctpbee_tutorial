@@ -29,7 +29,10 @@ sudo ctpbee -auto generate
 ```
 
 > 如果你的版本号小于0.45，那么请升级到>=0.45， ctpbee代码会保持向前兼容
+>
+> 如果你是使用虚拟环境请使用 sudo /path/to/python/bin/ctpbee -auto generate
+> 注意此处说的是虚拟环境目录下面的bin目录下的ctpbee
 
 ## for Mac
 
-不好意思我已经尝试过用ios的接口编译ctp接口，但是仍然无法正常进行工作。所以暂时不要使用！
+不好意思我已经尝试过用ios的接口编译ctp接口，但是仍然无法正常进行工作。所以暂时无法支持！

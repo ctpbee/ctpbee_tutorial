@@ -42,7 +42,7 @@ app.config.from_object(obj)
 --- 
 
 | 配置项 | 默认值 | 可选值 | 解释 | 
-| :------| ------: | :------: | :------:|
+| :------| ------: | :------: | :------|
 | TD_FUNC | False | True/False | 是否开启交易功能|
 | MD_FUNC | True | True/False | 是否开启行情功能|
 |INTERFACE|"ctp"| ctp/ctp_se  |载入接口名称，目前支持ctp生产以及ctp_se穿透式验证接口|

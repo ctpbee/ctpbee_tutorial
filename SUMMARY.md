@@ -4,6 +4,8 @@
 
 - [安装](install.md)
 - [快速开始](demo.md)
+- [教程](tutorial.md)
+    
 - [模块化工作](module.md)
     - [配置模块](modules/config.md)
     - [策略模块](modules/strategy.md)
@@ -19,3 +21,11 @@
 - [版本记录](version.md)
 - [穿透式申请](se.md)
 
+--- 
+- [回测](looper.md)
+    - [载入数据](loopers/data.md)
+    - [配置](loopers/config.md)
+    - [开始一个简单的回测](loopers/looper_demo.md)
+    - [回测指标解释](loopers/result.md)
+
+- [穿透式申请](se.md)
