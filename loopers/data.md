@@ -12,7 +12,8 @@ pip install quantadata
 
 ### 获取数据
 
-为了提供ctpbee历史数据 我特意编写了[quantdata](https://github.com/QUANTAXIS/quantdata)
+为了提供ctpbee历史数据 我特意编写了[quantdata](https://github.com/QUANTAXIS/quantdata) ，当前的***quantdata***并不完善,此项:我将在下一个阶段来着重开发它
+ 
 ```python
 from quantdata import QuantPlatform
 
@@ -20,7 +21,8 @@ platform = QuantPlatform(owner="tqsdk", support_platform="ctpbee", method="clien
 ```
 
 ### 标准数据格式
-我们对于历史数据期望一个这样的格式
+我们对于`add_data`接口期望的历史数据是一个这样的格式
+
 ```python
 hope = [
     {"high_price":1123 ,
@@ -43,7 +45,7 @@ hope = [
 当然如果你有额外的字段，可以自行添加， 同样你的on_bar接口或者on_tick接口都可以访问到数据.
 
 
-
+ctpbee目前并不是开箱即用的，仍然需要你有一定的开发知识。 [参见开头](result.md)
  
 
 
