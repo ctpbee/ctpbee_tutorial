@@ -36,3 +36,22 @@ sudo ctpbee -auto generate
 ## for Mac
 
 不好意思我已经尝试过用ios的接口编译ctp接口，但是仍然无法正常进行工作。所以暂时无法支持！
+
+
+
+## 注意 for [QA](https://github.com/QUANTAXIS/QUANTAXIS)
+
+我们提供了QA支持，请使用下面代码进行安装
+注意下面的 `--install-option`不是必需的，同时注意你需要安装本地的mongodb环境
+#### for linux
+```
+pip install -r < (echo "ctpbee[QA_SUPPORT] --install-option="--fix=true" --install-option="--uri="https://mirrors.aliyun.com/pypi/simple")
+```
+然后命令行执行，如果你已经安装好了QA数据那么你可以忽略以下步骤.我会在回测那边告诉你们如何进行使用
+```
+quantaxis
+```
+再输入
+```text
+save future_min
+```
