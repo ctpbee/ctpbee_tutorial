@@ -168,7 +168,7 @@ from ctpbee.constant import *
 def sell(self, price: float, volume: float, origin,price_type: OrderType = OrderType.LIMIT,
          stop: bool = False, lock: bool = False, **kwargs):
     """
-    此函数主要实现平多头的操作
+    此函数主要实现平空头的操作
     * price: 发单价格
     * volume: 发单手数
     * origin: 源，传入k线数据或者tick数据或者其他数据, 此处传入他主要是为了获取交易所代码
