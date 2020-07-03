@@ -187,10 +187,35 @@ if __name__ == '__main__':
 所以基于这三种方式，你可以很灵活的进行工程化~~ 
 
 
-### 需要注意的点
+### 额外的功能 
+1. run_until_complete
 
-我在这个地方和你讲述一些目前存在的问题，避免你在开发的时候走向自闭的道路。
+此功能来自于你想追踪一个操作而不想去执行`on_tick`的主函数逻辑 
+参数传入
 
----> 等待补充
+- target : 待传入的函数实体， 可以是`function`类型, 也可以是`method`类型.
+- *args, 你自己定义的函数额外参数,是一个元组，不要缺失`,`  比如 ("somewheve",)
+- typed: 类型, 可选有`EVENT_TICK`, `EVENT_BAR`，
+
+结束追踪操作
+返回`self.complete`即可
+
+调用示例
+```python
+from ctpbee import CtpbeeApi
+from ctpbee.constant import EVENT_TICK
+class Me(CtpbeeApi):
+    i = 0
+    def print_me(self, data, type, name):
+        if i < 10:
+            print(name)        
+        else:
+            return self.complete
+    def on_tick(self, tick):
+        self.run_until_complete(self.print_me, ("somewheve", ), EVENT_TICK)# 默认是EVENT_TICK, 可填最后一个或者不填或者换成EVENT_BAR
+        print(tick)
+```
+此`API`在载入运行的时候会先打印10次`somewheve`, 然后开始执行打印`tick`,  data是tick的数据, type是数据类型，名字可以自定义，注意他们的摆放顺序
+ 
 
 
