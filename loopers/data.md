@@ -1,36 +1,22 @@
 # 数据模块
 
 ## 数据来源
-`ctpbee`本身框架只提供一个运行环境，并不直接提供数据来源， 所以此处我们需要使用`quantdata`， 注意此处的我们仅仅使用`quantdata`的历史数据
-
-#### 安装`quantdata` 
-```bash
-pip install quantadata
-```
-> 注意由于`tqsdk`暂时不支持3.8版本的Python，推荐使用3.7
+`ctpbee`本身框架只提供一个运行环境，并不直接提供数据来源
 
 
-### 获取数据
 
-为了提供ctpbee历史数据 我特意编写了[quantdata](https://github.com/QUANTAXIS/quantdata) ，当前的***quantdata***并不完善,此项:我将在下一个阶段来着重开发它
- 
-```python
-from quantdata import QuantPlatform
+为了提供ctpbee历史数据，我们需要为此构建标准的数据流,
 
-platform = QuantPlatform(owner="tqsdk", support_platform="ctpbee", method="client")
-```
-
-### 标准数据格式
 我们对于`add_data`接口期望的历史数据是一个这样的格式
 
 ```python
 hope = [
-    {"high_price":1123 ,
-     "low_price":1054, 
-     "open_price": 1124, 
-     "close_price": 1200,
-     "local_symbol":"ag1912.SHFE",
-     "datetime": "你需要将原始数据其转换为一个datetime类型"
+    {"high_price":1123 , # 最高价
+     "low_price":1054,   # 最低价
+     "open_price": 1124,  # bar线的开盘价
+     "close_price": 1200, # bar线的收盘价
+     "local_symbol":"ag1912.SHFE", # 合约代码
+     "datetime": "你需要将原始数据其转换为一个datetime类型" 
     },
    {"high_price":1103 ,
      "low_price":1014, 
@@ -44,10 +30,25 @@ hope = [
 注意你必须将你的历史数据转换成目标格式数据才可以进行回测， 记住这6个字段的数据是必要的.
 当然如果你有额外的字段，可以自行添加， 同样你的on_bar接口或者on_tick接口都可以访问到数据.
 
+>  `ctpbee`会根据是否有last_price自动切换到on_bar 和on_tick, 但是标准的tick数据结构是ctpbee的TickData一样
 
-ctpbee目前并不是开箱即用的，仍然需要你有一定的开发知识。 [参见开头](result.md)
- 
 
+
+##  性能优化 
+
+当然`Python`的性能很慢, 根据一个场景，如果你要把超级多的tick转到成`ctpbee`的格式，那么光是读取就是一个非常耗时的工作，但是需要了解的并不是数据库拉取慢而是`Python` 转换慢， 实际上在数据库拉取的时候 在时序数据库上毫秒级别就完成了数据拉取工作了，但是在转换的时候会花费超级多的时间。所以有没有在`ctpbee`**慢**的基础上基础上加速一点点呢？ 
+
+答案是有的，借助Python的生成器`chain`我，然后一边读取一边序列化进行回测。
+
+当然这个需要你读取数据库的时候拉取数据的时候就做了生成器支持，我目前是在我现在公司的环境上构建了这套基准系统。
+
+
+
+
+
+### 未完待续 
+
+.... 
 
 
 
