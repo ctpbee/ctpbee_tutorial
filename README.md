@@ -32,7 +32,8 @@ Difference:
 
 - [数据结构](constant.md)
 
-- [基于插件式的构造](plugin.md)
+- [注意点](notice.md)
+
 
 ---
 ### 常见问题
