@@ -37,7 +37,7 @@
 | local_order_id|本地发单id |     offset    |   开平  |
 |     price     |    价格   |     status    |   状态    |
 |      time     |   时间    |     traded    |   是否已经成交    |
-|      type     |   价格类型    |         |          |
+|      type     |   价格类型    |   is_local  |   是否为本地报单     |
 ## TradeData
 
 | 字段名称 | 解释说明 | 字段名称 | 解释说明|
@@ -45,7 +45,7 @@
 |   direction   |   买卖方向  | local_order_id|   本地发单id   |
 | local_trade_id|    本地成交id  |     offset    |     开平     |
 |     price     |     价格  |      time     |    时间    |
-|     volume    |    成交量   |               |          |
+|     volume    |    成交量   |       is_local        |     是否为本地报单     |
 ## PositionData
 
 | 字段名称 | 解释说明 | 字段名称 | 解释说明|
