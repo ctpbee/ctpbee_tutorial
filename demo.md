@@ -8,14 +8,6 @@ from ctpbee import CtpBee, CtpbeeApi
 from ctpbee.constant import *
 from ctpbee import Action
 from ctpbee import RiskLevel
-from ctpbee import VLogger
-
-
-class Logger(VLogger):
-    def handler_record(self, record: dict):
-        """ 处理日志接口"""
-        print(record)
-
 
 class ActionMe(Action):
     def __init__(self, app):
@@ -82,7 +74,7 @@ def create_app():
     """
     工厂函数 创建app变量并加载相关变量，最后返回
     """
-    app = CtpBee("ctpbee", __name__, risk=RiskMe, action_class=ActionMe, logger_class=Logger)  # 在此处我们创建我们的核心App。
+    app = CtpBee("ctpbee", __name__, risk=RiskMe, action_class=ActionMe)  # 在此处我们创建我们的核心App。
     info = {
         "CONNECT_INFO": {
             "userid": "089131",

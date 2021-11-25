@@ -21,9 +21,9 @@
 示例:
 ```python
 from ctpbee import CtpBee, get_app
-app1 =  CtpBee("somewheve", __name__)
+app1 =  CtpBee("hello1", __name__)
 # 假定你已经通过上述代码创建了名为somewheve的App，那么下面代码将让你获取该app
-app2 = get_app("somewheve")
+app2 = get_app("hello1")
 assert app1 == app2
 ```
 可以看到他们是同一个对象。
@@ -41,16 +41,16 @@ assert app1 == app2
 ```python
 # 我们在此处创建了第一个账户App
 from ctpbee import current_app, switch_app, CtpBee
-app = CtpBee("yutiansut1", __name__)
+app = CtpBee("hello1", __name__)
 print(current_app.name)
 
 
-app2 = CtpBee("yutiansut2", __name__)
+app2 = CtpBee("hello2", __name__)
 # 此时候你会发现current_app2被切换到 current_app上面去
 print(current_app.name)
 
 # 现在通过调用switch_app将yutiansut1再次切换到栈顶， 也就是current_app上面
-switch_app("yutiansut1")
+switch_app("hello1")
 print(current_app.name)
 ```
 > 输出
@@ -96,7 +96,7 @@ from ctpbee import helper
 from ctpbee import get_ctpbee_path
 
 path = get_ctpbee_path()
-print("ctpbee path: ", path)
+print("path: ", path)
 ```
 
 输出:
@@ -104,4 +104,4 @@ print("ctpbee path: ", path)
 ```textmate
 ctpbee path:  /home/somewheve/.ctpbee
 ```
-注意此输出视个人电脑而定
+注意此输出视个人用户名以及操作系统而定
