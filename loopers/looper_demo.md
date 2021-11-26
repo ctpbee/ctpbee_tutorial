@@ -102,6 +102,3 @@ result, trade_record = app.get_result()
 - `auto_open`， bool型参数，每次手动复制地址到浏览器都很烦？，当这个参数为True的时候，会自动调用默认浏览器打开页面
 
 
-
-
-​         

@@ -15,7 +15,6 @@
     - [日志模块](modules/log.md)
 
 - [API介绍](API.md)
-- [插件](plugin.md)
 - [数据结构](constant.md)
 - [常见问题](error.md)
 - [版本记录](version.md)
