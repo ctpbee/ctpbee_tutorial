@@ -1,4 +1,5 @@
 # 数据结构
+
 > 此处描述了ctpbee里面的数据结构，敬请食用～
 
 ## TickData
@@ -22,6 +23,7 @@
 | open_interest |  持仓量   |   open_price  |   开盘价  |
 |   pre_close   |昨日收盘价|pre_settlement_price| 昨日结算价 |
 |     volume    |  成交量  |      pre_open_interest   |    昨日持仓量       |
+
 ## BarData
 
 | 字段名称 | 解释说明 | 字段名称 | 解释说明|
@@ -29,6 +31,7 @@
 |  close_price  |    收盘价 |   high_price  |  最高价   |
 |    interval   |  周期间隔 |   low_price   |  最低价   |
 |   open_price  |  开盘价格  |     volume    |k线内成交量 |
+
 ## OrderData
 
 | 字段名称 | 解释说明 | 字段名称 | 解释说明|
@@ -38,6 +41,7 @@
 |     price     |    价格   |     status    |   状态    |
 |      time     |   时间    |     traded    |   是否已经成交    |
 |      type     |   价格类型    |         |          |
+
 ## TradeData
 
 | 字段名称 | 解释说明 | 字段名称 | 解释说明|
@@ -46,13 +50,16 @@
 | local_trade_id|    本地成交id  |     offset    |     开平     |
 |     price     |     价格  |      time     |    时间    |
 |     volume    |    成交量   |               |          |
+
 ## PositionData
 
 | 字段名称 | 解释说明 | 字段名称 | 解释说明|
 | :-----  | :----:  | :----  | :----: |
 |     frozen    |    冻结   |local_position_id|   持仓id   |
-|      pnl      |    盈亏   |     price     |   持仓均价    |
+|      pnl      |    结算盈亏   |     price     |   持仓均价    |
 |     volume    |    持仓总量   |   yd_volume   |    昨日持仓量    |
+|     open_price    |    仓位持仓成本   |   float_pnl   |    浮动盈亏    |
+
 ## AccountData
 
 | 字段名称 | 解释说明 | 字段名称 | 解释说明|
@@ -68,7 +75,7 @@
 | option_expiry |    到期日     | option_strike |    执行价  |
 |  option_type  |    期权类型   |option_underlying|   基础商品代码     |
 | stop_supported|              |      pricetick    |   最小变动价位       |
-| product | 产品类型 |   size   |  合约数量乘数     |
+| product | 产品类型 |   size   |  合约乘数     |
 | name |   合约名称 |  exchange |  交易所 |  
 
 ---
