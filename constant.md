@@ -17,7 +17,7 @@
 |  bid_volume_1 |  买一量   |  bid_volume_2 |   买二量  |
 |  bid_volume_3 |  买三量   |  bid_volume_4 |   买四量  |
 |  bid_volume_5 |  买五量   |   high_price  |   最高价  |
-|   last_price  |  最新价   |  last_volume  |          |
+|   last_price  |  最新价   |  turnover     |   成交金额|
 |   limit_down  |  涨停     |    limit_up   |   跌停    |
 |   low_price   |  最低价   |      name     |   中文名  |
 | open_interest |  持仓量   |   open_price  |   开盘价  |
