@@ -56,9 +56,9 @@ print(current_app.name)
 > 输出
 
 ```textmate
-yutainsut1
-yutiansut2
-yutiansut1
+ctpbee1
+ctpbee2
+ctpbee3
 ```
 
 在上述的输出中，我们三次都打印了current_app的name属性， 可以看出前两次输出的都是最新创建的，但是当调用了switch_app之后，成功输出了`yutiansut1`的值

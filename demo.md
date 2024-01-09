@@ -9,34 +9,13 @@ from ctpbee.constant import *
 from ctpbee import Action
 from ctpbee import RiskLevel
 
+
 class ActionMe(Action):
     def __init__(self, app):
         # 请记住要对父类进行实例化
         super().__init__(app)
         # 通过add_risk_check接口添加风控
         self.add_risk_check(self.sell)
-
-
-class RiskMe(RiskLevel):
-    def before_sell(self, *args, **kwargs):
-        """
-        对sell调用进行事前检查,
-        """
-        # 在此打印sell传入的参数
-        print(args)
-        return True, args, kwargs
-
-    def after_sell(self, result):
-        """
-        事后进行检查, 注意此函数只能被执行有限的时间
-        """
-        print(result)
-
-    def realtime_check(self):
-        """
-        请务必重写此函数
-        此函数一秒钟执行一次， 如果你需要执行多个周期的检查，可以自行添加变量
-        """
 
 
 class DoubleMA(CtpbeeApi):
@@ -54,27 +33,12 @@ class DoubleMA(CtpbeeApi):
         """
         print(tick)
 
-    def on_bar(self, bar: BarData) -> None:
-        """
-        当有bar线生成的时候会调用此函数， 你可以通过print来打印bar，但是你需要注意的是
-        Note:
-            多周期的bar都会触发这个接口。他们的周期会被存放在 bar.interval这个值，如果你想实现多周期的策略，
-            请自行编写
-            def on_3_min_bar(self, bar):
-                pass
-
-            然后在本函数中编写
-            if bar.interval == 3:
-                self.on_3_min_bar(bar)
-        """
-        pass
-
 
 def create_app():
     """
     工厂函数 创建app变量并加载相关变量，最后返回
     """
-    app = CtpBee("ctpbee", __name__, risk=RiskMe, action_class=ActionMe)  # 在此处我们创建我们的核心App。
+    app = CtpBee("ctpbee", __name__, action_class=ActionMe)  # 在此处我们创建我们的核心App。
     info = {
         "CONNECT_INFO": {
             "userid": "089131",

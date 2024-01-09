@@ -20,8 +20,6 @@ app = CtpBee("somewheve", __name__)
 
 - [操作模块](modules/action.md)
 
-- [风控模块](modules/risk.md)
-
 - [日志模块](modules/log.md)
 
 
