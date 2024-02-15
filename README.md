@@ -27,6 +27,8 @@ Difference:
 
 - [快速入门](demo.md)
 
+- [插件](extension.md)
+
 - [模块化的构造方式](module.md)
 
 - [API介绍](API.md)

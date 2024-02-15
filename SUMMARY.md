@@ -10,7 +10,6 @@
     - [策略模块](modules/strategy.md)
     - [数据模块](modules/rec.md)
     - [操作模块](modules/action.md)
-    - [风控模块](modules/risk.md)
     - [日志模块](modules/log.md)
 
 - [API介绍](API.md)
@@ -26,4 +25,5 @@
     - [开始一个简单的回测](loopers/looper_demo.md)
     - [回测指标解释](loopers/result.md)
 
+- [插件](extension.md)
 - [穿透式申请](se.md)
