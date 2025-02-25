@@ -4,18 +4,15 @@
 话不多说上`code`
 
 ```python
+from ctpbee import Action
 from ctpbee import CtpBee, CtpbeeApi
 from ctpbee.constant import *
-from ctpbee import Action
-from ctpbee import RiskLevel
 
 
 class ActionMe(Action):
     def __init__(self, app):
-        # 请记住要对父类进行实例化
+        # 请记住要对父类进行实例化 你可以在此处保存一些上下文环境  使得开发逻辑隔离开来 让代码更加干净
         super().__init__(app)
-        # 通过add_risk_check接口添加风控
-        self.add_risk_check(self.sell)
 
 
 class DoubleMA(CtpbeeApi):
