@@ -14,6 +14,16 @@
   包含动态依赖库以及函数库等文件 然后`python setup.py build` 进行编译，如果没有报错, 那么`pip install -e . `安装包即可
   运行你写的测试程序即可
 - `4097` 一般都是dll/so版本与服务器支持版本不一致导致
+- `on_bar`函数不能触发问题 使用`pip3 install ctpbee_kline`安装k线插件
+
+```python
+from ctpbee import CtpbeeApi, CtpBee
+from ctpbee.constant import *
+from ctpbee_kline import Kline
+
+kline = Kline()
+app = CtpBee("market", __name__, refresh=True).with_tools(kline)
+```
 
 #### 更换依赖库文件教程
 
